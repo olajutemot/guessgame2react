@@ -44,6 +44,7 @@ const App = () => {
   const handleReset = () => {
     setGuess("");
     setWinnerStyle(false);
+    setLoserStyle(false);
     setMessage(messages.start);
     setScore(20);
     setHighScore(score);
@@ -79,10 +80,7 @@ const App = () => {
           </button>
         </section>
         <section className="right">
-          <p className="message">
-            {message}
-            {randomNumber}{" "}
-          </p>
+          <p className="message">{message}</p>
           <p className="label-score">
             💯 Score: <span className="score">{score}</span>
           </p>
