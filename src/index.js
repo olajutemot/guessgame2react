@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
-import { useState } from "react";
+
 const messages = {
   start: "Start guessing...",
   input: "invalid Number",
@@ -15,7 +16,7 @@ const App = () => {
   const [randomNumber, setRandomNumber] = useState(
     Math.trunc(Math.random() * 20) + 1
   );
-  const [guess, setGuess] = useState("");
+  const [guess, setGuess] = useState(null);
   const [message, setMessage] = useState(messages.start);
   const [winnerStyle, setWinnerStyle] = useState(false);
   const [loserStyle, setLoserStyle] = useState(false);
@@ -62,8 +63,11 @@ const App = () => {
       <header>
         <h1>Guess My Number!</h1>
         <p className="between">(Between 1 and 20)</p>
-        <button className="btn again" onClick={handleReset}>
+        <button className="btn again" id="desktop" onClick={handleReset}>
           Again!
+        </button>
+        <button className="btn again" id="mobile" onClick={handleReset}>
+          <FontAwesomeIcon icon="fa-solid fa-repeat" />
         </button>
         <div className="number">{winnerStyle ? randomNumber : "?"}</div>
       </header>
